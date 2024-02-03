@@ -1,1 +1,147 @@
-<p>paitent works!</p>
+<mat-stepper #stepper>
+  <form [formGroup]="paitentFormGroup" >
+    <mat-step [stepControl]="paitentFormGroup">
+
+      <ng-template matStepLabel>Basic Details</ng-template>
+      <mat-card>
+        <mat-card-content>
+          <div class="row mt-3">
+            <div class="col-4 mt-3">
+              <mat-form-field appearance="outline">
+                <mat-label>First Name</mat-label>
+                <input matInput placeholder="First name" formControlName="firstName" required>
+              </mat-form-field>
+            </div>
+            <div class="col-4 mt-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Last Name</mat-label>
+                <input matInput placeholder="Last Name" formControlName="lastName" required>
+              </mat-form-field>
+            </div>
+
+            <div class="col-4 mt-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Mobile No</mat-label>
+                <input matInput placeholder="Mobile No" formControlName="mobileNo" required>
+              </mat-form-field>
+            </div>
+            <div class="col-4 mt-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Emergency Contect No</mat-label>
+                <input matInput placeholder="Emergency Contect" formControlName="emgMobileNo" required>
+              </mat-form-field>
+            </div>
+            <div class="col-4 mt-3">
+              <mat-form-field>
+                <mat-label>Choose a Birthdate</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName ="birthDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-4 mt-3">
+              <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required>
+              </mat-form-field>
+            </div>
+            <div class="col-4 mt-3">
+              <mat-radio-group aria-label="Gender" appearance="outline" color="primary" formControlName="gender">
+                <mat-radio-button value="1">Male</mat-radio-button>
+                <mat-radio-button value="2">Female</mat-radio-button>
+              </mat-radio-group>
+            </div>
+            <div class="col-4 mt-3">
+              <mat-form-field appearance="outline" >
+                <mat-label>Address</mat-label>
+                <textarea matInput placeholder="Address" formControlName="address"></textarea>
+              </mat-form-field>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-step>
+    <mat-step  label="Medical Details">
+
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+            <mat-label>Blood Group</mat-label>
+            <mat-radio-group aria-label="Gender" appearance="outline" color="primary" formControlName="booldGroup">
+              <mat-radio-button style="margin-left:25px" value="1">A+</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">A-</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">B+</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">B-</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">O+</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">O-</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">AB+</mat-radio-button>
+              <mat-radio-button style="margin-left:25px" value="2">AB-</mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <div class="row mt-3">
+            <div class="col-4">
+              <mat-form-field appearance="outline" class="col-9" >
+                <mat-label>Medical Issue For Visite Doctor</mat-label>
+                <textarea matInput placeholder="" formControlName="medicalIssue"></textarea>
+              </mat-form-field>
+            </div>
+
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button matStepperNext>Next</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+
+    </mat-step>
+    <mat-step>
+      <ng-template matStepLabel>Shedule Visite</ng-template>
+      <mat-card>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-4">
+              <mat-form-field>
+                <mat-label>Select Doctor</mat-label>
+                <mat-select formControlName="doctorid">
+                  <mat-option>General Visite</mat-option>
+                  <mat-option value="doctor1">Doctor 1</mat-option>
+                  <mat-option value="doctor2">Doctor 2</mat-option>
+                  <mat-option value="doctor3">Doctor 3</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-form-field>
+                <mat-label>Choose a Doctor Visite date</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="visiteDate">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field>
+            </div>
+            <div class="col-4">
+              <mat-radio-group aria-label="Time" appearance="outline" color="primary" formControlName="visiteTime">
+                <mat-label>Choose a Timeing</mat-label>
+                <mat-radio-button value="1">Between : 10 AM To 01 PM</mat-radio-button>
+                <mat-radio-button value="2">Between : 02 PM To 06 PM</mat-radio-button>
+              </mat-radio-group>
+            </div>
+          </div>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button (click)="makeAppointment()">Make Appointment</button>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-step>
+  </form>
+</mat-stepper>
+
+
