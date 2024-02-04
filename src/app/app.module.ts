@@ -17,6 +17,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
 
 import { MatSelectModule } from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
 //import { provideNativeDateAdapter } from '@angular/material/core';
 //import { MatMomentDateModule } from "@angular/material-moment-adapter";
 @NgModule({
@@ -41,6 +42,7 @@ import { MatSelectModule } from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    HttpClientModule,
     //MatMomentDateModule
     //provideNativeDateAdapter
   ],
