@@ -1,6 +1,6 @@
 import { getLocaleDateTimeFormat } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -8,10 +8,12 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './paitent.component.html',
   styleUrls: ['./paitent.component.css']
 })
-export class PaitentComponent {
+export class PaitentComponent implements OnInit {
   minDate: Date;
   maxDate: Date;
   response: any;
+  doctorList: any;
+
   constructor(private _formBuilder: FormBuilder, private http: HttpClient) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -33,15 +35,25 @@ export class PaitentComponent {
 
   });
 
+  ngOnInit() {
+    this.getAllDoctor();
+  }
+  getAllDoctor() {    
+      this.http.get<any>(`https://localhost:7087/api/employee/GetAllDoctor`)
+        .subscribe((res) => {
+          this.doctorList = res;
+        });
+   
+  }
 
   makeAppointment() {
     console.log(this.paitentFormGroup.value);
     this.http.post<any>("https://localhost:7087/api/Paitent/Add", this.paitentFormGroup.value)
       .subscribe((res: any) => {
         this.response = res;
-        //this.getAllEmployee();
-        // if (this.response.statusCode == 200) {
-        //this.toasrt.success("Employee Created. 😎")
+      
+        // if (this.response > 0) {
+        //this.toasrt.success("Appoinment Created Successfully. 😎")
         //this.router.navigate(['employee']);
         //  }
         // else {

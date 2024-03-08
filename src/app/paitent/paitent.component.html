@@ -108,11 +108,8 @@
             <div class="col-4">
               <mat-form-field>
                 <mat-label>Select Doctor</mat-label>
-                <mat-select formControlName="doctorid">
-                  <mat-option>General Visite</mat-option>
-                  <mat-option value="1">Doctor 1</mat-option>
-                  <mat-option value="1">Doctor 2</mat-option>
-                  <mat-option value="1">Doctor 3</mat-option>
+                <mat-select formControlName="doctorid">                  
+                  <mat-option *ngFor="let doc of doctorList" value="{{doc.employeeId}}"> {{doc.employeeCode}}  -  {{doc.employeeName}} - {{doc.qualification}} </mat-option>
                 </mat-select>
               </mat-form-field>
             </div>
