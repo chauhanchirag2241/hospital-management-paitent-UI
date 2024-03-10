@@ -1,0 +1,66 @@
+.patient-details {
+  background-color: #f9f9f9;
+  border: 2px solid #3368c6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
+  color: #3368c6; /* Font color */
+}
+
+.visit-info {
+  margin-bottom: 10px;
+}
+
+  .visit-info p {
+    margin: 5px 0;
+  }
+
+    .visit-info p strong {
+      font-weight: bold;
+    }
+
+h2 {
+  color: #333; /* Heading color */
+}
+
+.patient-details:nth-child(odd) {
+  background-color: #F6FAFF;
+}
+
+.patient-details:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Table Styles */
+.medicine-bill {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+  /* Header Styles */
+  .medicine-bill th {
+    background-color: #007bff; /* Header background color */
+    color: white; /* Header text color */
+    padding: 10px;
+  }
+
+  /* Cell Styles */
+  .medicine-bill td {
+    padding: 10px;
+  }
+
+  /* Even Row Styles */
+  .medicine-bill tr:nth-child(even) {
+    background-color: #f2f2f2; /* Even row background color */
+  }
+
+  /* Hover Row Styles */
+  .medicine-bill tr:hover {
+    background-color: #cce5ff; /* Hover row background color */
+  }
+  /* Cell Styles */
+  .medicine-bill td {
+    padding: 10px;
+    border: 1px solid #ddd; /* Border for cells */
+  }

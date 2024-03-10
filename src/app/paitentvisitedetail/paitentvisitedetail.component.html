@@ -1,1 +1,78 @@
-<p>paitentvisitedetail works!</p>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <div class="container" style="margin-top:15px">
+    <div class="row">
+      <div class="col-3">
+        <mat-form-field appearance="outline" class="fieldsize">
+          <mat-label>Show Paitent Information For : </mat-label>
+          <mat-select formControlName="infoType">
+            <mat-option value="1">Paitent Visite Detail</mat-option>
+            <mat-option value="2">Paitent Medicine Bill</mat-option>
+            <mat-option value="3">Appointment Details</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <mat-form-field appearance="outline">
+          <mat-label>Email</mat-label>
+          <input matInput placeholder="Email Linked With Appointment" formControlName="email" required>
+        </mat-form-field>
+      </div>
+      <div class="col-3">
+        <input class="form-control" type="search" placeholder="Search By Paitent Id" aria-label="Search" formControlName="search">
+      </div>
+      <div class="col-2">
+        <button class="btn btn-success" type="submit">Search</button>
+      </div>
+
+    </div>
+  </div>
+</form>
+
+<div *ngIf="response" class="container"  id="pdfContent">
+  <br>
+  <h1 style="color: #031b4e !important;font-size:50px">Patient Visit Details</h1>
+  <br>
+  <h2>Paitent Id   : {{paitentId}}</h2>
+  <h2>Paitent Name : {{paitentName}}</h2>
+  <div class="patient-details" *ngFor="let visit of response">
+    <div class="visit-info">
+      <!--<p><strong>Patient ID:</strong> {{ visit.paitentId }}</p>
+      <p><strong>Patient Name:</strong> {{ visit.paitentName }}</p>-->
+      <!--<p><strong>Visit ID:</strong> {{ visit.paitentVisiteId }}</p>-->
+      <p><strong>Added By:</strong> Doctor Code : {{visit.employeeCode}} <br> Doctor Name : {{ visit.addedByName }} - {{visit.qualification}}</p>
+      <p><strong>Description:</strong> {{ visit.description }}</p>
+      <p><strong>Medicine Names:</strong> {{ visit.medicineNames || 'N/A' }}</p>
+    </div>
+  </div>
+</div>
+<button class="btn btn-success" *ngIf="response" (click)="generatePDF()">Download Visite Detail</button>
+
+<div *ngIf="medicineResponse" class="container" id="medicineTable">
+  <h1 style="color: #031b4e !important;font-size:50px">Patient Medicine Bill</h1>
+  <br>
+  <h2>Paitent Id   : {{paitentId}}</h2>
+  <h2>Paitent Name : {{paitentName}}</h2>
+  <table class="medicine-bill">
+    <thead>
+      <tr>
+        <th>Medicine Name</th>
+        <th>Quantity</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of medicineResponse">
+        <td>{{ item.medicineName }}</td>
+        <td>{{ item.quantity | number:'1.2-2' }}</td>
+        <td>{{ item.amount | number:'1.2-2' }}</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2"><strong>Total Amount:</strong></td>
+        <td>{{ calculateTotalAmount() | number:'1.2-2' }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+<button class="btn btn-success" *ngIf="medicineResponse" (click)="downloadPDF()">Download Bill</button>

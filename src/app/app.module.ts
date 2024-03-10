@@ -19,6 +19,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { HttpClientModule } from '@angular/common/http';
 import { PaitentvisitedetailComponent } from './paitentvisitedetail/paitentvisitedetail.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { FeaturesComponent } from './features/features.component';
+import { ServiceComponent } from './service/service.component';
+import { OurteamComponent } from './ourteam/ourteam.component';
+import { TestimonialComponent } from './testimonial/testimonial.component';
 //import { provideNativeDateAdapter } from '@angular/material/core';
 //import { MatMomentDateModule } from "@angular/material-moment-adapter";
 @NgModule({
@@ -27,7 +33,13 @@ import { PaitentvisitedetailComponent } from './paitentvisitedetail/paitentvisit
     DashboardComponent,
     PaitentComponent,
     NavbarComponent,
-    PaitentvisitedetailComponent
+    PaitentvisitedetailComponent,
+    HomeComponent,
+    AboutComponent,
+    FeaturesComponent,
+    ServiceComponent,
+    OurteamComponent,
+    TestimonialComponent
   ],
   imports: [
     BrowserModule,
