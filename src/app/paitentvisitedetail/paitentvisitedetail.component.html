@@ -7,7 +7,7 @@
           <mat-select formControlName="infoType">
             <mat-option value="1">Paitent Visite Detail</mat-option>
             <mat-option value="2">Paitent Medicine Bill</mat-option>
-            <mat-option value="3">Appointment Details</mat-option>
+            <!--<mat-option value="3">Appointment Details</mat-option>-->
           </mat-select>
         </mat-form-field>
       </div>
@@ -45,7 +45,7 @@
     </div>
   </div>
 </div>
-<button class="btn btn-success" *ngIf="response" (click)="generatePDF()">Download Visite Detail</button>
+<button class="btn btn-success" style="margin-left:1150px;margin-bottom:20px;margin-top:20px" *ngIf="response" (click)="generatePDF()">Download Visite Detail</button>
 
 <div *ngIf="medicineResponse" class="container" id="medicineTable">
   <h1 style="color: #031b4e !important;font-size:50px">Patient Medicine Bill</h1>
@@ -75,4 +75,4 @@
     </tfoot>
   </table>
 </div>
-<button class="btn btn-success" *ngIf="medicineResponse" (click)="downloadPDF()">Download Bill</button>
+<button class="btn btn-success" style="margin-left: 1150px; margin-bottom: 20px; margin-top: 20px" *ngIf="medicineResponse" (click)="downloadPDF()">Download Bill</button>

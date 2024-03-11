@@ -25,6 +25,7 @@ import { FeaturesComponent } from './features/features.component';
 import { ServiceComponent } from './service/service.component';
 import { OurteamComponent } from './ourteam/ourteam.component';
 import { TestimonialComponent } from './testimonial/testimonial.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 //import { provideNativeDateAdapter } from '@angular/material/core';
 //import { MatMomentDateModule } from "@angular/material-moment-adapter";
 @NgModule({
@@ -39,7 +40,8 @@ import { TestimonialComponent } from './testimonial/testimonial.component';
     FeaturesComponent,
     ServiceComponent,
     OurteamComponent,
-    TestimonialComponent
+    TestimonialComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,

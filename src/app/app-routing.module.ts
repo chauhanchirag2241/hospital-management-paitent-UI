@@ -5,6 +5,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { FeaturesComponent } from './features/features.component';
 import { HomeComponent } from './home/home.component';
 import { OurteamComponent } from './ourteam/ourteam.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { PaitentComponent } from './paitent/paitent.component';
 import { PaitentvisitedetailComponent } from './paitentvisitedetail/paitentvisitedetail.component';
 import { ServiceComponent } from './service/service.component';
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "service", component: ServiceComponent },
   { path: "ourteam", component: OurteamComponent },
   { path: "testimonial", component: TestimonialComponent },
-  { path: "paitentdetail", component: PaitentvisitedetailComponent }
+  { path: "paitentdetail", component: PaitentvisitedetailComponent },
+  { path: '**', component: PagenotfoundComponent }
 ];
 
 @NgModule({
