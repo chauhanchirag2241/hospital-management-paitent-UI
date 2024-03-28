@@ -1,21 +1,20 @@
-
-    <!-- Page Header Start -->
-    <div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
-      <div class="container text-center py-5 mt-4">
-          <h1 class="display-2 text-white mb-3 animated slideInDown">Appoinment</h1>
-          <nav aria-label="breadcrumb animated slideInDown">
-              <ol class="breadcrumb justify-content-center mb-0">
-                  <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
-                  <li class="breadcrumb-item"><a >Pages</a></li>
-                  <li class="breadcrumb-item" aria-current="page">Appoinment</li>
-              </ol>
-          </nav>
-      </div>
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-5 mb-5 wow fadeIn" data-wow-delay="0.1s">
+  <div class="container text-center py-5 mt-4">
+    <h1 class="display-2 text-white mb-3 animated slideInDown">Appoinment</h1>
+    <nav aria-label="breadcrumb animated slideInDown">
+      <ol class="breadcrumb justify-content-center mb-0">
+        <li class="breadcrumb-item"><a routerLink="/home">Home</a></li>
+        <li class="breadcrumb-item"><a>Pages</a></li>
+        <li class="breadcrumb-item" aria-current="page">Appoinment</li>
+      </ol>
+    </nav>
   </div>
-  <!-- Page Header End -->
+</div>
+<!-- Page Header End -->
 
 <mat-stepper #stepper>
-  <form [formGroup]="paitentFormGroup" >
+  <form [formGroup]="paitentFormGroup">
     <mat-step [stepControl]="paitentFormGroup">
 
       <ng-template matStepLabel>Basic Details</ng-template>
@@ -50,7 +49,7 @@
             <div class="col-3 mt-3">
               <mat-form-field>
                 <mat-label>Choose a Birthdate</mat-label>
-                <input matInput [matDatepicker]="picker" formControlName ="birthDate">
+                <input matInput [matDatepicker]="picker" formControlName="birthDate">
                 <mat-hint>MM/DD/YYYY</mat-hint>
                 <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
@@ -82,7 +81,7 @@
       </mat-card>
 
     </mat-step>
-    <mat-step  label="Medical Details">
+    <mat-step label="Medical Details">
 
       <mat-card>
         <mat-card-content>
@@ -101,7 +100,7 @@
           </div>
           <div class="row mt-3">
             <div class="col-4">
-              <mat-form-field appearance="outline" class="col-9" >
+              <mat-form-field appearance="outline" class="col-9">
                 <mat-label>Medical Issue For Visite Doctor</mat-label>
                 <textarea matInput placeholder="" formControlName="medicalIssue"></textarea>
               </mat-form-field>
@@ -124,7 +123,7 @@
             <div class="col-4">
               <mat-form-field>
                 <mat-label>Select Doctor</mat-label>
-                <mat-select formControlName="doctorid">                  
+                <mat-select formControlName="doctorid">
                   <mat-option *ngFor="let doc of doctorList" value="{{doc.employeeId}}"> {{doc.employeeCode}}  -  {{doc.employeeName}} - {{doc.qualification}} </mat-option>
                 </mat-select>
               </mat-form-field>
@@ -139,7 +138,7 @@
               </mat-form-field>
             </div>
             <div class="col-4">
-                <mat-label>Choose a Timeing</mat-label>
+              <mat-label>Choose a Timeing</mat-label>
               <mat-radio-group aria-label="Time" appearance="outline" color="primary" formControlName="timeingShift">
                 <mat-radio-button value="10 AM To 01 PM">Between : 10 AM To 01 PM</mat-radio-button>
                 <mat-radio-button value="02 PM To 06 PM">Between : 02 PM To 06 PM</mat-radio-button>
@@ -158,3 +157,11 @@
 </mat-stepper>
 
 
+<div class="alert alert-success toasterclass " role="alert" *ngIf="showApp">
+  <i class="bi bi-bookmarks-fill"></i> &nbsp;&nbsp;
+  Appointment Create Successfully...
+</div>
+<div class="alert alert-danger toasterclasserr " role="alert" *ngIf="showAppError">
+  <i class="bi bi-bookmarks-fill"></i> &nbsp;&nbsp;
+  Error White Creating Appointment!!
+</div>

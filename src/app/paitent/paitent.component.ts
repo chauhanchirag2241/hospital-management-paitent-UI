@@ -13,7 +13,8 @@ export class PaitentComponent implements OnInit {
   maxDate: Date;
   response: any;
   doctorList: any;
-
+  showApp: boolean = false;
+  showAppError: boolean = false;
   constructor(private _formBuilder: FormBuilder, private http: HttpClient) {
     const currentYear = new Date().getFullYear();
     this.minDate = new Date(currentYear - 20, 0, 1);
@@ -52,13 +53,13 @@ export class PaitentComponent implements OnInit {
       .subscribe((res: any) => {
         this.response = res;
       
-        // if (this.response > 0) {
-        //this.toasrt.success("Appoinment Created Successfully. 😎")
-        //this.router.navigate(['employee']);
-        //  }
-        // else {
-        // this.toasrt.error("Error While Creating Employee. 😒😰")
-        // }
+        if (this.response > 0) {
+          this.showApp = true;
+          
+          }
+        else {
+          this.showAppError = true;
+         }
       });
   }
 
